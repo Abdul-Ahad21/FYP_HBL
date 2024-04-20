@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="AdminUserManagement.css">
+</head>
+<body>
+
+    <header>
+        <nav id="main-nav">
+            <div class="dropdown" id="dropdown">
+                <button class="dropbtn">Admin</button>
+                <div class="dropdown-content">
+                    <a href="#" onclick="window.open('AddAdmin.html', '_self')">Add Admin</a>
+                    <a href="#"onclick="window.open('ModifyAdmin.html', '_self')">Modify or Delete Admin</a>
+                </div>
+            </div>
+            <div class="dropdown" id="dropdown">
+                <button class="dropbtn">User Management</button>
+                <div class="dropdown-content">
+                    <a href="#"onclick="window.open('AddUser.html', '_self')">Register a new Organisation</a>
+                    <a href="#"onclick="window.open('ModifyUser.html', '_self')">Update or Delete Organisation</a>
+                </div>
+            </div>
+            <div class="dropdown" id="dropdown2" >
+                <button class="dropbtn"> Name </button>
+                <div class="dropdown-content">
+                    <a href="#" onclick="window.open('index.html', '_self')" >Logout</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    
+
+
+
+<main id="content-area">
+    <div class="form-container">
+        <form id="modifyAdminForm">
+            <label for="username">Search by User Name:</label>
+            <input type="text" id="username" name="username">
+            <button type="search" onclick="searchUser()">Search</button>
+    
+            <label for="designation">Change Designation to:</label>
+            <select id="designation" name="designation">
+                <option value="Master Admin">Master Admin</option>
+                <option value="Sub-Admin">Sub-Admin</option>
+            </select>
+    
+            <label for="city">Change City to:</label>
+            <select id="city" name="city" aria-sort="ascending">
+                <option value="---Select City---">"---Select City---"</option>
+                <option value="Karachi">Karachi</option>
+                <option value="Lahore">Lahore</option>
+                <option value="Sukkhur">Sukkhur</option>
+                <option value="Faislabad">Faislabad</option>
+                <option value="Islamabad">Islamabad</option>
+                <option value="Quetta">Quetta</option>
+                <option value="Multan">Multan</option>
+                </select>
+    
+            <label for="location">Change Location to:</label>
+            <input type="text" id="location" name="location">
+    
+            <label for="securityKey">Enter Security Key to Confirm:</label>
+            <input type="password" id="securityKey" name="securityKey">
+    
+            <button type="submit">Update Admin</button>
+
+            <label> <center>- - - - - - - - - OR - - - - - - - - - - -</center></label>
+
+            <button type="submit">Delete Admin</button>
+        </form>
+    </div>
+
+</main>
+</body>
+</html>
+
+
+
+
+
+<!-- JavaScript file  -->
+
+<!--Connect Via Database to fill values as they are-->

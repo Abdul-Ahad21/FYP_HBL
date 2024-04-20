@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="AdminUserManagement.css">
+</head>
+<body>
+
+    <header>
+        <nav id="main-nav">
+            <div class="dropdown" id="dropdown">
+                <button class="dropbtn">Admin</button>
+                <div class="dropdown-content">
+                    <a href="#" onclick="window.open('AddAdmin.html', '_self')">Add Admin</a>
+                    <a href="#"onclick="window.open('ModifyAdmin.html', '_self')">Modify or Delete Admin</a>
+                </div>
+            </div>
+            <div class="dropdown" id="dropdown">
+                <button class="dropbtn">User Management</button>
+                <div class="dropdown-content">
+                    <a href="#"onclick="window.open('AddUser.html', '_self')">Register a new Organisation</a>
+                    <a href="#"onclick="window.open('ModifyUser.html', '_self')">Update or Delete Organisation</a>
+                </div>
+            </div>
+            <div class="dropdown" id="dropdown2" >
+                <button class="dropbtn"> Name </button>
+                <div class="dropdown-content">
+                    <a href="#" onclick="window.open('index.html', '_self')" >Logout</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    
+
+
+
+<main id="content-area">
+
+
+<div class="form-container">
+    <form  method="post" onsubmit="return checkSecurityKey()">
+        <label for="firstName">First Name:</label> 
+        <input type="text" id="firstName" name="firstName" required>
+
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" required>
+
+        <label for="designation">Designation:</label>
+        <select id="designation" name="designation">
+            <option value="Master Admin">Master Admin</option>
+            <option value="Sub-Admin">Sub-Admin</option>
+            <!-- More Options???? -->
+        </select>
+
+        <label for="city">City:</label>
+        <select id="city" name="city" aria-bsort="ascending">
+            <option value="---Select City---">"---Select City---"</option>
+            <option value="Karachi">Karachi</option>
+            <option value="Lahore">Lahore</option>
+            <option value="Sukkhur">Sukkhur</option>
+            <option value="Faislabad">Faislabad</option>
+            <option value="Islamabad">Islamabad</option>
+            <option value="Quetta">Quetta</option>
+            <option value="Multan">Multan</option>
+
+            <!-- Add more options as needed -->
+        </select>
+
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="location" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="securityKey">Enter Security Key to Add:</label>
+        <input type="password" id="securityKey" name="securityKey" required>
+
+        <button type="submit">Add</button>
+    </form>
+</div>
+<div id="popup" class="popup">
+    <p id="popup-message"></p>
+</div>
+</body>
+</html>
+
+</main>
+
+
+
+<!-- JavaScript file  -->
+
+
+<script>
+var dropdowns = document.getElementsByClassName("dropdown");
+var i;
+
+for (i = 0; i < dropdowns.length; i++) {
+  dropdowns[i].addEventListener('click', function() {
+    // This will toggle the display of the dropdown-content
+    this.querySelector('.dropdown-content').classList.toggle("show");
+  });
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+
+function checkSecurityKey() {
+    var firstName = document.getElementById('firstName').value;
+    var lastName = document.getElementById('lastName').value;
+    var designation = document.getElementById('designation').value;
+    var city = document.getElementById('city').value;
+    var location = document.getElementById('location').value;
+    var securityKey = document.getElementById('securityKey').value;
+    if(securityKey === '1234567') {
+        alert('Admin Added with Following Credentials: \n' +
+              'Name: ' + firstName + ' ' + lastName + '\n' +
+              'Designation: ' + designation + '\n' +
+              'City: ' + city + '\n' +
+              'Location: ' + location);
+    } else {
+        alert('Invalid credentials, admin can\'t be added');
+    }
+    // Clear the form
+    var form = document.getElementById('myForm');
+    form.reset();
+    // Prevent form submission
+    return false;
+}
+</script>
+
+
+</body>
+</html>

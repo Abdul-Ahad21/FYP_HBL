@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="AdminUserManagement.css">
+</head>
+<body>
+
+    <header>
+        <div id="logo">HBL</div>
+        <nav id="main-nav">
+            <div class="dropdown">
+                <button class="dropbtn">Admin</button>
+                <div class="dropdown-content">
+                    <a href="#" onclick="window.open('AddAdmin.html', '_self')">Add Admin</a>
+                    <a href="#"onclick="window.open('ModifyAdmin.html', '_self')">Modify or Delete Admin</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">User Management</button>
+                <div class="dropdown-content">
+                    <a href="#"onclick="window.open('AddUser.html', '_self')">Regester a new Organisation</a>
+                    <a href="#"onclick="window.open('ModifyUser.html', '_self')">Update  or Delete Organisation</a>
+                </div>
+            </div>
+            <button id="logout" onclick="window.open('index.html', '_self')">Logout</button>
+        </nav>
+    </header>
+    
+    
+    <div class="form-container">
+        <form  method="post" onsubmit="return checkSecurityKey()">
+            
+            <label for="Name of Orgainsation">Search by Name of Orgainsation:</label> 
+            <input type="text" id="Name of Orgainsation" name="Name of Orgainsation" required>
+
+            <button type="search" onclick="searchUser()">Search</button>
+
+            <label for="Name of HOD">Update Name of HOD:</label> 
+            <input type="text" id="Name of HOD" name="Name of HOD" required>
+    
+            <label for="city"> Update City:</label>
+            <select id="city" name="city" aria-bsort="ascending">
+                <option value="---Select City---">---Change City to---</option>
+                <option value="Karachi">Karachi</option>
+                <option value="Lahore">Lahore</option>
+                <option value="Sukkhur">Sukkhur</option>
+                <option value="Faislabad">Faislabad</option>
+                <option value="Islamabad">Islamabad</option>
+                <option value="Quetta">Quetta</option>
+                <option value="Multan">Multan</option>
+    
+                <!-- Add more options as needed -->
+            </select>
+    
+            <label for="Head Office Location">Update Head Office Location to:</label>
+            <input type="text" id="location" name="location" required>
+    
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="Orgainsation Type">Orgainsation Type:</label>
+            <select id="Orgainsation Type" name="Orgainsation Type" aria-bsort="ascending">
+                <option value="---Select Orgaisation Type---">---Select Orgaisation Type---</option>
+                <option value="Health Sector">Health Sector</option>
+                <option value="Education Sector">Eduation Sector</option>
+                <option value="Telecom Sector">Telecom Sector</option>
+    
+                <!-- Add more options as needed -->
+            </select>
+            <div > Update the Categories</div>
+            <div class="radio-grid">
+                <!-- Column 1 -->
+                <div>
+                    <div class="radio-item"><input type="radio" id="category11" name="category"><label for="category11">Category 1</label></div>
+                    <div class="radio-item"><input type="radio" id="category12" name="category"><label for="category12">Category 2</label></div>
+                    <div class="radio-item"><input type="radio" id="category11" name="category"><label for="category11">Category 3</label></div>
+                    <div class="radio-item"><input type="radio" id="category12" name="category"><label for="category12">Category 4</label></div>
+                    <div class="radio-item"><input type="radio" id="category11" name="category"><label for="category11">Category 5</label></div>
+                    <div class="radio-item"><input type="radio" id="category12" name="category"><label for="category12">Category 6</label></div>
+                    <div class="radio-item"><input type="radio" id="category11" name="category"><label for="category11">Category 7</label></div>
+                    <div class="radio-item"><input type="radio" id="category12" name="category"><label for="category12">Category 8</label></div>
+                    <div class="radio-item"><input type="radio" id="category11" name="category"><label for="category11">Category 9</label></div>
+                    <div class="radio-item"><input type="radio" id="category12" name="category"><label for="category12">Category 10</label></div>
+                </div>
+                
+                <!-- Column 2 -->
+                <div>
+                  <div class="radio-item"><input type="radio" id="category11" name="category"><label for="category11">Category 11</label></div>
+                  <div class="radio-item"><input type="radio" id="category12" name="category"><label for="category12">Category 12</label></div>
+                  <div class="radio-item"><input type="radio" id="category11" name="category"><label for="category11">Category 13</label></div>
+                  <div class="radio-item"><input type="radio" id="category12" name="category"><label for="category12">Category 14</label></div>
+                  <div class="radio-item"><input type="radio" id="category11" name="category"><label for="category11">Category 15</label></div>
+                  <div class="radio-item"><input type="radio" id="category12" name="category"><label for="category12">Category 16</label></div>
+                  <div class="radio-item"><input type="radio" id="category11" name="category"><label for="category11">Category 17</label></div>
+                  <div class="radio-item"><input type="radio" id="category12" name="category"><label for="category12">Category 18</label></div>
+                  <div class="radio-item"><input type="radio" id="category11" name="category"><label for="category11">Category 19</label></div>
+                  <div class="radio-item"><input type="radio" id="category12" name="category"><label for="category12">Category 20</label></div>
+                </div>
+                
+                <!-- Column 3 -->
+                <div>
+                    <div class="radio-item"><input type="radio" id="category11" name="category"><label for="category11">Category 21</label></div>
+                    <div class="radio-item"><input type="radio" id="category12" name="category"><label for="category12">Category 22</label></div>
+                    <div class="radio-item"><input type="radio" id="category11" name="category"><label for="category11">Category 23</label></div>
+                    <div class="radio-item"><input type="radio" id="category12" name="category"><label for="category12">Category 24</label></div>
+                    <div class="radio-item"><input type="radio" id="category11" name="category"><label for="category11">Category 25</label></div>
+                    <div class="radio-item"><input type="radio" id="category12" name="category"><label for="category12">Category 26</label></div>
+                    <div class="radio-item"><input type="radio" id="category11" name="category"><label for="category11">Category 27</label></div>
+                    <div class="radio-item"><input type="radio" id="category12" name="category"><label for="category12">Category 28</label></div>
+                    <div class="radio-item"><input type="radio" id="category11" name="category"><label for="category11">Category 29</label></div>
+                    <div class="radio-item"><input type="radio" id="category12" name="category"><label for="category12">Category 30</label></div>
+                </div>
+                
+                <!-- Column 4 -->
+                <div>
+                    <div class="radio-item"><input type="radio" id="category11" name="category"><label for="category11">Category 31</label></div>
+                    <div class="radio-item"><input type="radio" id="category12" name="category"><label for="category12">Category 42</label></div>
+                    <div class="radio-item"><input type="radio" id="category11" name="category"><label for="category11">Category 33</label></div>
+                    <div class="radio-item"><input type="radio" id="category12" name="category"><label for="category12">Category 34</label></div>
+                    <div class="radio-item"><input type="radio" id="category11" name="category"><label for="category11">Category 35</label></div>
+                    <div class="radio-item"><input type="radio" id="category12" name="category"><label for="category12">Category 36</label></div>
+                    <div class="radio-item"><input type="radio" id="category11" name="category"><label for="category11">Category 37</label></div>
+                    <div class="radio-item"><input type="radio" id="category12" name="category"><label for="category12">Category 38</label></div>
+                    <div class="radio-item"><input type="radio" id="category11" name="category"><label for="category11">Category 39</label></div>
+                    <div class="radio-item"><input type="radio" id="category12" name="category"><label for="category12">Category 40</label></div>
+                </div>
+              </div>
+
+              <label for="securityKey">Enter Security Key to Modify the User:</label>
+            <input type="password" id="securityKey" name="securityKey" required>
+
+            <button type="submit">Update</button>
+
+            <label> <center>- - - - - - - - - OR - - - - - - - - - - -</center></label>
+
+            <button type="submit">Delete User</button>
+        </form>
+    </div>
+    
+    <script>
+      // JavaScript code will go here
+    </script>
+    
+    </body>
+    </html>
+    
+
+
+
+</body>
+</html>
+
+
+
+
+
+<!-- Add your JavaScript file link here -->
+
+
+<script>
+// Get all elements with class="dropdown" and loop through them
+var dropdowns = document.getElementsByClassName("dropdown");
+var i;
+
+for (i = 0; i < dropdowns.length; i++) {
+  dropdowns[i].addEventListener('click', function() {
+    // This will toggle the display of the dropdown-content
+    this.querySelector('.dropdown-content').classList.toggle("show");
+  });
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+
+
+</body>
+</html>
